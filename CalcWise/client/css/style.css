@@ -1,0 +1,350 @@
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #F5F1F9;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    height: 100px;
+    width: 100%;
+    background-color: #FFFFFF;
+}
+
+.headerDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    margin-left: 20px;
+    margin-top: 10px;
+    height: 70px;
+}
+
+.headerButton {
+    margin-top: 10px;
+    margin-right: 20px;
+    width: 250px;
+    height: 45px;
+    background-color: #8942D6;
+    border-radius: 12px;
+    text-decoration: none;
+    border: none;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 16px;
+    transition: 0.4s;
+}
+
+.headerButton:hover {
+    background-color: #622b9e;
+}
+
+main {
+    margin-top: 20px;
+}
+
+.calculator {
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 12px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 10px 10px 10px 10px;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputs input {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-right: 450px;
+    padding-left: 20px;
+    border-radius: 12px;
+    border: 2px solid #A4A9B5;
+    font-size: 18px;
+}
+
+.results {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    background-color: #F5F5F5;
+    border-radius: 12px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.results h3 {
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
+.result {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.resultLeft {
+    color: #A4A9B5;
+}
+
+.resultRight {
+
+    text-align: end;
+    font-weight: bold;
+}
+
+.resultsButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calcButton {
+    margin-top: 10px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    width: 200px;
+    height: 45px;
+    background-color: #8942D6;
+    border-radius: 12px;
+    text-decoration: none;
+    border: none;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 16px;
+    transition: 0.4s;
+}
+
+.calcButton:hover {
+    background-color: #622b9e;
+}
+
+.third {
+    margin-left: 20px;
+}
+
+.card {
+    background-color: #FFFFFF;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+}
+
+.cardLogo {
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.cardLogo img {
+    border-radius: 12px;
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+}
+
+.description h4 {
+    margin-top: 0px;
+    margin-bottom: 1px;
+}
+
+.description p {
+    margin-top: 1px;
+    margin-bottom: 0px;
+}
+
+.upCard {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.downCard {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.downCard p {
+    color: #A4A9B5;
+}
+
+.cardButton {
+    color: #FFFFFF;
+    width: 150px;
+    height: 35px;
+    background-color: #8942D6;
+    border-radius: 12px;
+    text-decoration: none;
+    border: none;
+    transition: 0.4s;
+}
+
+.cardButton:hover {
+    background-color: #622b9e;
+}
+
+footer {
+    background-color: #EBE2F3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.icons img {
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.registerMain {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 130px);
+}
+
+.registerWindow {
+    width: 650px;
+    height: 320px;
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.registerInputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.registerInputs input{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 350px;
+    padding-left: 20px;
+    border-radius: 12px;
+    border: 2px solid #A4A9B5;
+    font-size: 18px;
+}
+
+.registerButton {
+    margin-top: 10px;
+    margin-right: 20px;
+    width: 250px;
+    height: 45px;
+    background-color: #8942D6;
+    border-radius: 12px;
+    text-decoration: none;
+    border: none;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 16px;
+    transition: 0.4s;
+}
+
+.registerButton:hover {
+    background-color: #622b9e;
+}
+
+.entryMain {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 130px);
+}
+
+.entryWindow {
+    width: 650px;
+    height: 270px;
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.entryInputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.entryInputs input{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 350px;
+    padding-left: 20px;
+    border-radius: 12px;
+    border: 2px solid #A4A9B5;
+    font-size: 18px;
+}
+
+.href {
+    width: 100%;
+    display: flex;
+    align-items: start;
+}
+
+.href a {
+    color: #8942D6;
+}
+
+.entryButton {
+    margin-top: 10px;
+    margin-right: 20px;
+    width: 250px;
+    height: 45px;
+    background-color: #8942D6;
+    border-radius: 12px;
+    text-decoration: none;
+    border: none;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 16px;
+    transition: 0.4s;
+}
+
+.entryButton:hover {
+    background-color: #622b9e;
+}
