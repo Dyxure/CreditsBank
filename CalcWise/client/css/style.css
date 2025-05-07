@@ -1,3 +1,4 @@
+/* index page */
 body {
     padding: 0;
     margin: 0;
@@ -158,6 +159,7 @@ main {
 }
 
 .description {
+    width: 100px;
     display: flex;
     flex-direction: column;
     margin-left: 5px;
@@ -223,6 +225,8 @@ footer {
     margin-right: 8px;
 }
 
+/* register page */
+
 .registerMain {
     height: 100%;
     display: flex;
@@ -280,6 +284,8 @@ footer {
 .registerButton:hover {
     background-color: #622b9e;
 }
+
+/* entry page */
 
 .entryMain {
     height: 100%;
@@ -347,4 +353,32 @@ footer {
 
 .entryButton:hover {
     background-color: #622b9e;
+}
+
+/* history page */
+
+.historyMain {
+    height: 100%;
+    min-height: calc(100vh - 130px);
+}
+
+.element {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 40px;
+    margin-right: 40px;
+    background-color: #FFFFFF;
+    border-radius: 12px;    
+    padding-bottom: 20px;
+    padding-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.desc {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
