@@ -3,19 +3,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const accountButton = document.getElementById('accountButton');
     const accountMenu = document.getElementById('accountMenu');
     const logoutButton = document.getElementById('logoutButton');
-    const applyButtons = document.querySelectorAll('.cardButton');
 
     if (token) {
         accountButton.textContent = 'Личный кабинет';
-        applyButtons.forEach(btn => btn.style.display = 'inline-block');
     } else {
         accountButton.textContent = 'Вход/Регистрация';
-        applyButtons.forEach(btn => btn.style.display = 'none');
     }
 
     accountButton.addEventListener('click', (e) => {
         e.preventDefault();
-        e.stopPropagation(); // чтобы клик по кнопке не закрывал меню
+        e.stopPropagation();
         console.log('вы нажали кнопку');
 
         if (token) {
@@ -37,5 +34,34 @@ document.addEventListener('DOMContentLoaded', () => {
         ) {
             accountMenu.classList.add('hidden');
         }
+    });
+
+    // Функция скрытия кнопок
+    const hideApplyButtons = () => {
+        if (!token) {
+            const buttons = document.querySelectorAll('.cardButton');
+            buttons.forEach(btn => {
+                btn.style.display = 'none';
+            });
+        }
+    };
+
+    // Первый вызов на случай уже существующих кнопок
+    hideApplyButtons();
+
+    // MutationObserver на изменение DOM
+    const observer = new MutationObserver(mutations => {
+        for (const mutation of mutations) {
+            if (mutation.type === 'childList') {
+                // Новые элементы добавлены
+                hideApplyButtons();
+            }
+        }
+    });
+
+    // Наблюдаем за телом документа (можно ограничить область)
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
     });
 });
