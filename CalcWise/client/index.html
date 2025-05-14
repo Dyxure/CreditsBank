@@ -10,144 +10,43 @@
     <header>
         <div class="headerDiv">
             <img class="logo" src="devs/Image/logo.png" alt="logo">
-            <a href="pages/entry.html"><button class="headerButton">Войти/Зарегистрироваться</button></a>
+            <button id="accountButton" class="headerButton">Войти/Зарегистрироваться</button>
+            <div id="accountMenu" class="account-menu hidden">
+                <a href="pages/history.html"><img src="devs/Icons/history.svg" alt="">История</a>
+                <button id="logoutButton"><img src="devs/Icons/leave.svg" alt="">Выйти</button>
+            </div>
         </div>
     </header>
 
-    <main>
+    <main class = "mainMain">
         <div class="calculator">
             <div class="inputs">
-                <input type="text" placeholder="Сумма кредита">
-                <input type="text" placeholder="Процентная ставка">
-                <input type="text" placeholder="Срок кредита в месяцах">
+                <input id="amount" type="text" placeholder="Сумма кредита">
+                <input id="percent" type="text" placeholder="Процентная ставка">
+                <input id="months" type="text" placeholder="Срок кредита в месяцах">
             </div>
             <div class="results">
                 <h3>Результаты расчета</h3>
                 <div class="result">
                     <div class="resultLeft">
-                        <h4>Ежемесячный платеж</h4>
-                        <p>Сумма кредита</p>
-                        <p>Переплата</p>
+                        <h4 >Ежемесячный платеж</h4>
+                        <p >Сумма кредита</p>
+                        <p >Переплата</p>
                         <p>Общая сумма займа</p>
                     </div>
                     <div class="resultRight">
-                        <h4>220 000₽</h4>
-                        <p>12 000 000₽</p>
-                        <p>65 000 000₽</p>
-                        <p>77 000 000₽</p>
+                        <h4 id="monthlyPayment">0₽</h4>
+                        <p id="totalAmount">0₽</p>
+                        <p id="overpayment">0₽</p>
+                        <p id="totalCredit">0₽</p>
                     </div>
                 </div>
                 <div class="resultsButton">
-                    <button class="calcButton">Рассчитать</button>
+                    <button id = "calculateBtn" class="calcButton">Рассчитать</button>
                 </div>
             </div>
         </div>
-        <h3 class="third">Подобрано 3 предложения</h3>
-        <div class="offers">
-            <div class="card">
-                <div class="upCard">
-                    <div class="cardLogo">
-                        <img src="devs/Image/Tbank.png" alt="">
-                        <div class="description">
-                            <h4>Т-Банк</h4>
-                            <p>Наличными</p>
-                        </div>
-                    </div> 
-                    <button class="cardButton">Оформить кредит</button>
-                </div>
-                <div class="downCard">
-                    <div class="conditions">
-                        <p>Сумма</p>
-                        <h3>До 3 000 000₽</h3>
-                    </div>
-                    <div class="conditions">
-                        <p>Срок</p>
-                        <h3>До 5 лет</h3>
-                    </div>
-                    <div class="conditions">
-                        <p>ПСК</p>
-                        <h3>24,900 - 65,006%</h3>
-                    </div>
-                    <div class="conditions">
-                        <p>Ставка</p>
-                        <h3>29,9 - 38,5%</h3>
-                    </div>
-                    <div class="conditions">
-                        <p>Платеж</p>
-                        <h3>220 000 - 300 000₽</h3>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="upCard">
-                    <div class="cardLogo">
-                        <img src="devs/Image/alfa.png" alt="">
-                        <div class="description">
-                            <h4>Альфа-Банк</h4>
-                            <p>Наличными</p>
-                        </div>
-                    </div> 
-                    <button class="cardButton">Оформить кредит</button>
-                </div>
-                <div class="downCard">
-                    <div class="conditions">
-                        <p>Сумма</p>
-                        <h3>До 7 500 000₽</h3>
-                    </div>
-                    <div class="conditions">
-                        <p>Срок</p>
-                        <h3>До 20 лет</h3>
-                    </div>
-                    <div class="conditions">
-                        <p>ПСК</p>
-                        <h3>23,900 - 45,990%</h3>
-                    </div>
-                    <div class="conditions">
-                        <p>Ставка</p>
-                        <h3>24 - 47%</h3>
-                    </div>
-                    <div class="conditions">
-                        <p>Платеж</p>
-                        <h3>250 000 - 370 000₽</h3>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="upCard">
-                    <div class="cardLogo">
-                        <img src="devs/Image/loco.png" alt="">
-                        <div class="description">
-                            <h4>Локо-Банк</h4>
-                            <p>Наличными</p>
-                        </div>
-                    </div> 
-                    <button class="cardButton">Оформить кредит</button>
-                </div>
-                <div class="downCard">
-                    <div class="conditions">
-                        <p>Сумма</p>
-                        <h3>До 20 000 000₽</h3>
-                    </div>
-                    <div class="conditions">
-                        <p>Срок</p>
-                        <h3>До 20 лет</h3>
-                    </div>
-                    <div class="conditions">
-                        <p>ПСК</p>
-                        <h3>27,865 - 38,827%</h3>
-                    </div>
-                    <div class="conditions">
-                        <p>Ставка</p>
-                        <h3>27,5 - 30,4%</h3>
-                    </div>
-                    <div class="conditions">
-                        <p>Платеж</p>
-                        <h3>200 000 - 280 000₽</h3>
-                    </div>
-                </div>
-            </div>
+        <div id = "offers" class="offers">
         </div>
     </main>
 
@@ -160,5 +59,7 @@
         </div>
         <p>© 2025 Все права защищены</p>
     </footer>
+    <script src="js/script.js"></script>
+    <script src="js/auth-ui.js"></script>
 </body>
 </html>

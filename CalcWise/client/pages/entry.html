@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
-    <title>Document</title>
+    <title>Log in</title>
 </head>
 <body>
     <header>
@@ -16,12 +16,12 @@
     <main class="entryMain">
         <div class="entryWindow">
             <div class="entryInputs">
-                <input type="email" placeholder="Введите ваш e-mail">
-                <input type="password" placeholder="Введите пароль">
+                <input id="email" type="email" placeholder="Введите ваш e-mail" required>
+                <input id="password" type="password" placeholder="Введите пароль" required>
                 <div class="href">
                     <a class="entryHref" href="register.html">Зарегистрироваться</a>
                 </div>
-                <button class="entryButton">Войти</button>
+                <button id="loginButton" class="entryButton">Войти</button>
             </div>
         </div>
     </main>
@@ -35,5 +35,6 @@
         </div>
         <p>© 2025 Все права защищены</p>
     </footer>
+    <script src="../js/login.js"></script>
 </body>
 </html>

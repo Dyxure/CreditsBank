@@ -43,8 +43,59 @@ header {
     background-color: #622b9e;
 }
 
+.account-container {
+    position: relative;
+    display: inline-block;
+}
+
+#accountMenu {
+    width: 100px;
+    height: 50px;
+    background: #FFFFFF;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+.account-menu {
+    position: absolute;
+    top: 75px; 
+    right: 30px;
+    background: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    display: flex;
+    z-index: 9999;
+}
+
+.account-menu a, .account-menu button {
+    color: #000000;
+    display: flex;
+    margin-bottom: 5px;
+    text-align: left;
+    align-items: center;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.account-menu img {
+    height: 20px;
+    margin-right: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
 main {
     margin-top: 20px;
+}
+
+.mainMain{
+    height: 100%;
+    min-height: calc(100vh - 130px);
 }
 
 .calculator {
@@ -155,7 +206,12 @@ main {
 }
 
 .cardLogo img {
+    height: 50px;
     border-radius: 12px;
+}
+
+.cardButton {
+    display: inline;
 }
 
 .description {
@@ -236,8 +292,8 @@ footer {
 }
 
 .registerWindow {
-    width: 650px;
-    height: 320px;
+    width: 450px;
+    height: 800px;
     background-color: #FFFFFF;
     border-radius: 12px;
     display: flex;
@@ -254,12 +310,20 @@ footer {
     align-items: center;
 }
 
+#registerForm {
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .registerInputs input{
     margin-top: 5px;
     margin-bottom: 5px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-right: 350px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 120px;
     padding-left: 20px;
     border-radius: 12px;
     border: 2px solid #A4A9B5;

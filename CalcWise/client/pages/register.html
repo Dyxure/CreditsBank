@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
-    <title>Document</title>
+    <title>Register</title>
 </head>
 <body>
     <header>
@@ -16,10 +16,21 @@
     <main class="registerMain">
         <div class="registerWindow">
             <div class="registerInputs">
-                <input type="email" placeholder="Введите ваш e-mail">
-                <input type="password" placeholder="Введите пароль">
-                <input type="password" placeholder="Подтвердите пароль">
-                <button class="registerButton">Зарегистрироваться</button>
+                <form id="registerForm">
+                    <input type="email" id="email" placeholder="Введите ваш e-mail" required>
+                    <input type="password" id="password" placeholder="Введите пароль" required>
+                    <input type="password" id="confirmPassword" placeholder="Подтвердите пароль" required>
+                    <input type="text" id="lastName" placeholder="Фамилия" required>
+                    <input type="text" id="firstName" placeholder="Имя" required>
+                    <input type="text" id="middleName" placeholder="Отчество">
+                    <input type="date" id="birthDate" required>
+                    <input type="text" id="passportSeries" placeholder="Серия паспорта" required>
+                    <input type="text" id="passportNumber" placeholder="Номер паспорта" required>
+                    <input type="text" id="passportIssuedBy" placeholder="Кем выдан" required>
+                    <input type="date" id="passportIssueDate" placeholder="Когда выдан" required>
+                    <input type="text" id="passportDivisionCode" placeholder="Код подразделения" required>
+                    <button class="registerButton">Зарегистрироваться</button>
+                </form>
             </div>
         </div>
     </main>
@@ -33,5 +44,6 @@
         </div>
         <p>© 2025 Все права защищены</p>
     </footer>
+    <script src="../js/register.js"></script>
 </body>
 </html>
