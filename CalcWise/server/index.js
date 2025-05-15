@@ -137,6 +137,67 @@ app.post('/api/login', async (req, res) => {
     }
 });
 
+app.post('/api/history', async (req, res) => {
+    const authHeader = req.headers.authorization;
+    const token = authHeader && authHeader.split(' ')[1];
+
+    if (!token) {
+        return res.status(401).json({ message: 'Нет токена авторизации' });
+    }
+
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET || 'dev_secret');
+        console.log('Декодированный токен:', decoded);
+
+        const userId = decoded.id;
+        if (!userId) {
+            return res.status(400).json({ message: 'userId не найден в токене' });
+        }
+
+        const { bank_id, amount, term_months, monthly_payment, interest_rate } = req.body;
+
+        await pool.query(`
+            INSERT INTO history (user_id, bank_id, amount, term_months, monthly_payment, interest_rate)
+            VALUES ($1, $2, $3, $4, $5, $6)
+        `, [userId, bank_id, amount, term_months, monthly_payment, interest_rate]);
+
+        res.status(201).json({ message: 'История успешно записана' });
+    } catch (err) {
+        console.error('Ошибка:', err.message);
+        res.status(403).json({ message: 'Неверный токен или ошибка сервера' });
+    }
+});
+
+app.get('/api/history', async (req, res) => {
+    const authHeader = req.headers.authorization;
+    const token = authHeader && authHeader.split(' ')[1];
+
+    if (!token) {
+        return res.status(401).json({ message: 'Нет токена авторизации' });
+    }
+
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET || 'dev_secret');
+        const userId = decoded.userId || decoded.id;
+
+        const result = await pool.query(`
+            SELECT h.amount, h.term_months, h.interest_rate, h.monthly_payment,
+                   b.name AS bank_name, b.logo_url
+            FROM history h
+            JOIN banks b ON h.bank_id = b.id
+            WHERE h.user_id = $1
+            ORDER BY h.id DESC
+        `, [userId]);
+
+        res.json(result.rows);
+    } catch (err) {
+        console.error(err);
+        res.status(403).json({ message: 'Ошибка авторизации или сервера' });
+    }
+});
+
+
+
 app.use((err, req, res, next) => {
     console.error('Внутренняя ошибка сервера:', err.stack);
     res.status(500).json({ message: 'Что-то пошло не так' });

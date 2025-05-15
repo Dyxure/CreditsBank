@@ -30,7 +30,7 @@ document.getElementById('registerForm').addEventListener('submit', async functio
         const result = await res.json();
         if (res.ok) {
             alert('Регистрация успешна!');
-            window.location.href = '/index.html';
+            window.location.href = '../pages/entry.html';
         } else {
             alert(result.message || 'Ошибка регистрации');
         }

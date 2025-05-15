@@ -35,18 +35,6 @@ CREATE TABLE history (
     amount DECIMAL(15, 2) NOT NULL,
     term_months INT NOT NULL,
     monthly_payment DECIMAL(15, 2) NOT NULL,
-    status VARCHAR(20) DEFAULT 'pending',
+    interest_rate DECIMAL(5, 2) NOT NULL,
     created_at TIMESTAMP DEFAULT NOW()
 );
-
--- Создание индексов
-CREATE INDEX idx_users_email ON users(email);
-CREATE INDEX idx_history_user_id ON history(user_id);
-CREATE INDEX idx_history_bank_id ON history(bank_id);
-CREATE INDEX idx_history_status ON history(status);
-
--- Вставка тестовых данных для банков
-INSERT INTO banks (name, logo_url, max_amount, max_term_months, interest_rate, psk) VALUES
-('Сбербанк', 'https://example.com/sberbank.png', 5000000, 84, 7.9, 8.5),
-('Тинькофф', 'https://example.com/tinkoff.png', 3000000, 60, 8.9, 9.2),
-('ВТБ', 'https://example.com/vtb.png', 4000000, 72, 8.5, 9.0); 

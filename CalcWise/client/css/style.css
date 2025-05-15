@@ -443,3 +443,10 @@ footer {
     flex-direction: row;
     justify-content: space-around;
 }
+
+.tagP {
+    display: flex;
+    justify-content: center;
+    color: #000000;
+    font-size: large;
+}

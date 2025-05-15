@@ -46,36 +46,52 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Отображение карточек банков
     function renderCards(amount, months) {
-        container.innerHTML = '';
+    container.innerHTML = '';
 
-        banks.forEach(bank => {
-            const rate = parseFloat(bank.interest_rate);
-            const payment = calculateMonthlyPayment(amount, months, rate);
+    // Сначала вычисляем платежи для всех банков
+    const banksWithPayment = banks.map(bank => {
+        const rate = parseFloat(bank.interest_rate);
+        const payment = calculateMonthlyPayment(amount, months, rate);
+        return { ...bank, payment, rate };
+    });
 
-            const div = document.createElement('div');
-            div.className = 'card';
-            div.innerHTML = `
-                <div class="upCard">
-                    <div class="cardLogo">
-                        <img src="${bank.logo_url}" alt="лого">
-                        <div class="description">
-                            <h4>${bank.name}</h4>
-                            <p>Наличными</p>
-                        </div>
-                    </div> 
-                    <button id="cardButton" class="cardButton">Оформить кредит</button>
-                </div>
-                <div class="downCard">
-                    <div class="conditions"><p>Сумма</p><h3>До ${(bank.max_amount)}₽</h3></div>
-                    <div class="conditions"><p>Срок</p><h3>До ${Math.floor(bank.max_term_months / 12)} лет</h3></div>
-                    <div class="conditions"><p>ПСК</p><h3>${(bank.psk)}%</h3></div>
-                    <div class="conditions"><p>Ставка</p><h3>${formatNumber(rate)}%</h3></div>
-                    <div class="conditions"><p>Платеж</p><h3>${formatNumber(payment)} ₽</h3></div>
-                </div>
-            `;
-            container.appendChild(div);
-        });
-    }
+    // Сортировка: от самого меньшего платежа к большему
+    banksWithPayment.sort((a, b) => a.payment - b.payment);
+
+    // Отрисовка карточек
+    banksWithPayment.forEach(bank => {
+        const div = document.createElement('div');
+        div.className = 'card';
+
+        div.innerHTML = `
+            <div class="upCard">
+                <div class="cardLogo">
+                    <img src="${bank.logo_url}" alt="лого">
+                    <div class="description">
+                        <h4>${bank.name}</h4>
+                        <p>Наличными</p>
+                    </div>
+                </div> 
+                <button 
+                    class="cardButton"
+                    data-bank-id="${bank.id}"
+                    data-interest-rate="${bank.rate}"
+                    data-monthly-payment="${bank.payment}"
+                >Оформить кредит</button>
+            </div>
+            <div class="downCard">
+                <div class="conditions"><p>Сумма</p><h3>До ${bank.max_amount}₽</h3></div>
+                <div class="conditions"><p>Срок</p><h3>До ${Math.floor(bank.max_term_months / 12)} лет</h3></div>
+                <div class="conditions"><p>ПСК</p><h3>${bank.psk}%</h3></div>
+                <div class="conditions"><p>Ставка</p><h3>${formatNumber(bank.rate)}%</h3></div>
+                <div class="conditions"><p>Платеж</p><h3>${formatNumber(bank.payment)} ₽</h3></div>
+            </div>
+        `;
+
+        container.appendChild(div);
+    });
+}
+
 
     // Очистка ввода
     function sanitizeInput(e) {
@@ -94,6 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Ошибка загрузки банков:', err);
         });
 
+    // Кнопка расчета
     calculateBtn.addEventListener('click', () => {
         calculateLoan();
 
@@ -105,7 +122,61 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Очистка ввода
     [amountInput, percentInput, monthsInput].forEach(input => {
         input.addEventListener('input', sanitizeInput);
+    });
+
+    // Обработка кликов по динамически созданным кнопкам
+    container.addEventListener('click', async (e) => {
+        const btn = e.target.closest('.cardButton');
+        if (!btn) return;
+
+        const token = localStorage.getItem('token');
+        if (!token) {
+            alert('Пожалуйста, войдите в аккаунт');
+            return;
+        }
+
+        const bankId = btn.getAttribute('data-bank-id');
+        const interestRate = parseFloat(btn.getAttribute('data-interest-rate'));
+        const monthlyPayment = parseFloat(btn.getAttribute('data-monthly-payment'));
+
+        const amount = parseFloat(amountInput.value.replace(/\s/g, '').replace(',', '.')) || 0;
+        const term = parseInt(monthsInput.value) || 0;
+
+        if (!amount || !term) {
+            alert('Введите сумму и срок кредита');
+            return;
+        }
+
+        console.log(`полученные данные: id банка: ${bankId}, ставка: ${interestRate}, платеж: ${monthlyPayment}, сумма: ${amount}, срок: ${term}`);
+
+        try {
+            const response = await fetch('/api/history', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    bank_id: bankId,
+                    amount,
+                    term_months: term,
+                    monthly_payment: monthlyPayment,
+                    interest_rate: interestRate
+                })
+            });
+
+            const result = await response.json();
+            if (response.ok) {
+                alert('Кредит успешно оформлен!');
+            } else {
+                alert('Ошибка: ' + result.message);
+            }
+        } catch (error) {
+            console.error(error);
+            alert('Произошла ошибка при оформлении кредита');
+        }
     });
 });
