@@ -24,11 +24,11 @@
                     <input type="text" id="firstName" placeholder="Имя" required>
                     <input type="text" id="middleName" placeholder="Отчество">
                     <input type="date" id="birthDate" required>
-                    <input type="text" id="passportSeries" placeholder="Серия паспорта" required>
-                    <input type="text" id="passportNumber" placeholder="Номер паспорта" required>
+                    <input type="text" maxlength="4" pattern="\d{4}" inputmode="numeric" id="passportSeries" placeholder="Серия паспорта" required>
+                    <input type="text" maxlength="6" pattern="\d{6}" inputmode="numeric" id="passportNumber" placeholder="Номер паспорта" required>
                     <input type="text" id="passportIssuedBy" placeholder="Кем выдан" required>
                     <input type="date" id="passportIssueDate" placeholder="Когда выдан" required>
-                    <input type="text" id="passportDivisionCode" placeholder="Код подразделения" required>
+                    <input type="text" type="text" maxlength="6" pattern="\d{6}" inputmode="numeric" id="passportDivisionCode" placeholder="Код подразделения" required>
                     <button class="registerButton">Зарегистрироваться</button>
                 </form>
             </div>
