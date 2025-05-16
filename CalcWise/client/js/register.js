@@ -38,3 +38,8 @@ document.getElementById('registerForm').addEventListener('submit', async functio
         alert('Ошибка сети: ' + err.message);
     }
 });
+
+function noDigits(event) {
+  if ("1234567890".indexOf(event.key) != -1)
+    event.preventDefault();
+}
