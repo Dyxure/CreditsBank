@@ -1,452 +1,359 @@
-/* index page */
+/* ===== Тема: Переменные ===== */
+:root {
+  --bg-color: #F5F1F9;
+  --fg-color: #000000;
+  --card-bg: #FFFFFF;
+  --secondary-bg: #F5F5F5;
+  --accent-color: #8942D6;
+  --accent-hover: #622b9e;
+  --border-color: #A4A9B5;
+  --footer-bg: #EBE2F3;
+  --menu-bg: #FFFFFF;
+}
+
+body.dark {
+  --bg-color: #1E1E2F;
+  --fg-color: #FFFFFF;
+  --card-bg: #2C2C3A;
+  --secondary-bg: #3A3A4D;
+  --accent-color: #B387F5;
+  --accent-hover: #9262d1;
+  --border-color: #555770;
+  --footer-bg: #2C2C3A;
+  --menu-bg: #2C2C3A;
+}
+
+/* ===== Базовая настройка ===== */
 body {
-    padding: 0;
-    margin: 0;
-    background-color: #F5F1F9;
-    font-family: Arial, Helvetica, sans-serif;
+  padding: 0;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--fg-color);
 }
 
 header {
-    height: 100px;
-    width: 100%;
-    background-color: #FFFFFF;
+  height: 100px;
+  width: 100%;
+  background-color: var(--card-bg);
 }
 
 .headerDiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerButtons {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: end;
 }
 
 .logo {
-    margin-left: 20px;
-    margin-top: 10px;
-    height: 70px;
+  margin-left: 20px;
+  margin-top: 10px;
+  height: 70px;
 }
 
-.headerButton {
-    margin-top: 10px;
-    margin-right: 20px;
-    width: 250px;
-    height: 45px;
-    background-color: #8942D6;
-    border-radius: 12px;
-    text-decoration: none;
-    border: none;
-    text-align: center;
-    color: #FFFFFF;
-    font-size: 16px;
-    transition: 0.4s;
+.headerButton, .calcButton, .registerButton, .entryButton, .cardButton, .toggleButton {
+  margin-top: 10px;
+  margin-right: 20px;
+  width: 250px;
+  height: 45px;
+  background-color: var(--accent-color);
+  border-radius: 12px;
+  text-decoration: none;
+  border: none;
+  text-align: center;
+  color: #FFFFFF;
+  font-size: 16px;
+  transition: 0.4s;
 }
 
-.headerButton:hover {
-    background-color: #622b9e;
+.headerButton:hover,
+.calcButton:hover,
+.registerButton:hover,
+.entryButton:hover,
+.cardButton:hover {
+  background-color: var(--accent-hover);
 }
 
 .account-container {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
 }
 
 .account-menu {
-    width: 100px;
-    height: 50px;
-    background: #FFFFFF;
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 75px; 
-    right: 30px;
-    background: white;
-    border: 1px solid #ccc;
-    padding: 10px;
-    display: flex;
-    z-index: 9999;
+  width: 100px;
+  height: 50px;
+  background: var(--menu-bg);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 75px; 
+  right: 30px;
+  border: 1px solid var(--border-color);
+  padding: 10px;
+  z-index: 9999;
 }
 
 .account-menu a, .account-menu button {
-    color: #000000;
-    display: flex;
-    margin-bottom: 5px;
-    text-align: left;
-    align-items: center;
-    text-decoration: none;
-    background: none;
-    border: none;
-    cursor: pointer;
+  color: var(--fg-color);
+  display: flex;
+  margin-bottom: 5px;
+  text-align: left;
+  align-items: center;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .account-menu img {
-    height: 20px;
-    margin-right: 5px;
+  height: 20px;
+  margin-right: 5px;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
+/* ===== Главная ===== */
 main {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
-.mainMain{
-    height: 100%;
-    min-height: calc(100vh - 130px);
+.mainMain {
+  height: 100%;
+  min-height: calc(100vh - 130px);
 }
 
 .calculator {
-    background-color: #FFFFFF;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    border-radius: 12px;
-    margin-left: 20px;
-    margin-right: 20px;
-    padding: 10px 10px 10px 10px;
+  background-color: var(--card-bg);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 12px;
+  margin: 0 20px;
+  padding: 10px;
 }
 
 .inputs {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .inputs input {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    padding-right: 450px;
-    padding-left: 20px;
-    border-radius: 12px;
-    border: 2px solid #A4A9B5;
-    font-size: 18px;
+  margin: 5px 0;
+  padding: 30px 450px 30px 20px;
+  border-radius: 12px;
+  border: 2px solid var(--border-color);
+  font-size: 18px;
+  background-color: var(--bg-color);
+  color: var(--fg-color);
 }
 
 .results {
-    display: flex;
-    flex-direction: column;
-    width: 350px;
-    background-color: #F5F5F5;
-    border-radius: 12px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  background-color: var(--secondary-bg);
+  border-radius: 12px;
+  margin: 10px 0;
+  padding: 0 20px;
 }
 
 .results h3 {
-    margin-top: 20px;
-    margin-bottom: 0px;
+  margin: 20px 0 0;
 }
 
 .result {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .resultLeft {
-    color: #A4A9B5;
+  color: var(--border-color);
 }
 
 .resultRight {
-
-    text-align: end;
-    font-weight: bold;
+  text-align: end;
+  font-weight: bold;
 }
 
 .resultsButton {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.calcButton {
-    margin-top: 10px;
-    margin-right: 20px;
-    margin-bottom: 20px;
-    width: 200px;
-    height: 45px;
-    background-color: #8942D6;
-    border-radius: 12px;
-    text-decoration: none;
-    border: none;
-    text-align: center;
-    color: #FFFFFF;
-    font-size: 16px;
-    transition: 0.4s;
-}
-
-.calcButton:hover {
-    background-color: #622b9e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .third {
-    margin-left: 20px;
+  margin-left: 20px;
 }
 
+/* ===== Карточки ===== */
 .card {
-    background-color: #FFFFFF;
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border-radius: 12px;
+  background-color: var(--card-bg);
+  margin: 10px 20px;
+  border-radius: 12px;
 }
 
 .cardLogo {
-    height: 50px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  height: 50px;
+  display: flex;
+  align-items: center;
 }
 
 .cardLogo img {
-    height: 50px;
-    border-radius: 12px;
+  height: 50px;
+  border-radius: 12px;
 }
 
 .cardButton {
-    display: inline;
+  width: 150px;
+  height: 35px;
 }
 
 .description {
-    width: 100px;
-    display: flex;
-    flex-direction: column;
-    margin-left: 5px;
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 5px;
 }
 
 .description h4 {
-    margin-top: 0px;
-    margin-bottom: 1px;
+  margin: 0 0 1px;
 }
 
 .description p {
-    margin-top: 1px;
-    margin-bottom: 0px;
+  margin: 1px 0 0;
 }
 
 .upCard {
-    padding-top: 10px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 20px;
-    margin-left: 10px;
-    margin-right: 10px;
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 10px 0;
 }
 
 .downCard {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-left: 40px;
-    margin-right: 40px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 40px;
 }
 
 .downCard p {
-    color: #A4A9B5;
+  color: var(--border-color);
 }
 
-.cardButton {
-    color: #FFFFFF;
-    width: 150px;
-    height: 35px;
-    background-color: #8942D6;
-    border-radius: 12px;
-    text-decoration: none;
-    border: none;
-    transition: 0.4s;
-}
-
-.cardButton:hover {
-    background-color: #622b9e;
-}
-
+/* ===== Футер ===== */
 footer {
-    background-color: #EBE2F3;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  background-color: var(--footer-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .icons img {
-    margin-left: 8px;
-    margin-right: 8px;
+  margin: 0 8px;
 }
 
-/* register page */
-
-.registerMain {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: calc(100vh - 130px);
+/* ===== Регистрация ===== */
+.registerMain, .entryMain {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 130px);
 }
 
 .registerWindow {
-    width: 450px;
-    height: 800px;
-    background-color: #FFFFFF;
-    border-radius: 12px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
+  width: 450px;
+  height: 800px;
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-.registerInputs {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.registerInputs, .entryInputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #registerForm {
-    width: 800px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.registerInputs input{
-    margin-top: 5px;
-    margin-bottom: 5px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-right: 120px;
-    padding-left: 20px;
-    border-radius: 12px;
-    border: 2px solid #A4A9B5;
-    font-size: 18px;
-}
-
-.registerButton {
-    margin-top: 10px;
-    margin-right: 20px;
-    width: 250px;
-    height: 45px;
-    background-color: #8942D6;
-    border-radius: 12px;
-    text-decoration: none;
-    border: none;
-    text-align: center;
-    color: #FFFFFF;
-    font-size: 16px;
-    transition: 0.4s;
-}
-
-.registerButton:hover {
-    background-color: #622b9e;
-}
-
-/* entry page */
-
-.entryMain {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: calc(100vh - 130px);
+.registerInputs input, .entryInputs input {
+  margin: 5px 0;
+  padding: 10px 120px 10px 20px;
+  border-radius: 12px;
+  border: 2px solid var(--border-color);
+  font-size: 18px;
+  background-color: var(--bg-color);
+  color: var(--fg-color);
 }
 
 .entryWindow {
-    width: 650px;
-    height: 270px;
-    background-color: #FFFFFF;
-    border-radius: 12px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 650px;
+  height: 270px;
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  margin-bottom: 20px;
 }
 
-.entryInputs {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.entryInputs input{
-    margin-top: 5px;
-    margin-bottom: 5px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-right: 350px;
-    padding-left: 20px;
-    border-radius: 12px;
-    border: 2px solid #A4A9B5;
-    font-size: 18px;
+.entryInputs input {
+  padding: 20px 350px 20px 20px;
 }
 
 .href {
-    width: 100%;
-    display: flex;
-    align-items: start;
+  width: 100%;
+  display: flex;
+  align-items: start;
 }
 
 .href a {
-    color: #8942D6;
+  color: var(--accent-color);
 }
 
-.entryButton {
-    margin-top: 10px;
-    margin-right: 20px;
-    width: 250px;
-    height: 45px;
-    background-color: #8942D6;
-    border-radius: 12px;
-    text-decoration: none;
-    border: none;
-    text-align: center;
-    color: #FFFFFF;
-    font-size: 16px;
-    transition: 0.4s;
-}
-
-.entryButton:hover {
-    background-color: #622b9e;
-}
-
-/* history page */
-
+/* ===== История ===== */
 .historyMain {
-    height: 100%;
-    min-height: calc(100vh - 130px);
+  height: 100%;
+  min-height: calc(100vh - 130px);
 }
 
 .element {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-left: 40px;
-    margin-right: 40px;
-    background-color: #FFFFFF;
-    border-radius: 12px;    
-    padding-bottom: 20px;
-    padding-top: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
+  display: flex;
+  align-items: center;
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  padding: 20px 20px;
+  margin: 20px;
 }
 
 .desc {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
 }
 
 .tagP {
-    display: flex;
-    justify-content: center;
-    color: #000000;
-    font-size: large;
+  display: flex;
+  justify-content: center;
+  color: var(--fg-color);
+  font-size: large;
 }

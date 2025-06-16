@@ -10,7 +10,10 @@
     <header>
         <div class="headerDiv">
             <img class="logo" src="devs/Image/logo.png" alt="logo">
-            <button id="accountButton" class="headerButton">Войти/Зарегистрироваться</button>
+            <div class="headerButtons">
+                <button class="toggleButton" onclick="toggleTheme()">Сменить тему</button>
+                <button id="accountButton" class="headerButton">Войти/Зарегистрироваться</button>
+            </div>
             <div id="accountMenu" class="account-menu hidden">
                 <a href="pages/history.html"><img src="devs/Icons/history.svg" alt="">История</a>
                 <button id="logoutButton"><img src="devs/Icons/leave.svg" alt="">Выйти</button>
@@ -59,6 +62,7 @@
         </div>
         <p>© 2025 Все права защищены</p>
     </footer>
+    <script src="js/toogleTheme.js"></script>
     <script src="js/script.js"></script>
     <script src="js/auth-ui.js"></script>
 </body>

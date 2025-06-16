@@ -76,8 +76,8 @@ app.post('/api/register', async (req, res) => {
                 email, password_hash, last_name, first_name, middle_name,
                 birth_date, passport_series, passport_number,
                 passport_issued_by, passport_issue_date, passport_division_code
-            ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)
-        `, [
+            ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)
+            `, [
             email, hashedPassword, last_name, first_name, middle_name || null,
             birth_date, encSeries, encNumber, encIssuedBy, passport_issue_date, encDivisionCode
         ]);
