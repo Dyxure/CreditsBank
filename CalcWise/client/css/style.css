@@ -70,11 +70,27 @@ header {
   transition: 0.4s;
 }
 
+.toggleButton {
+  margin-top: 10px;
+  margin-right: 20px;
+  width: 45px;
+  height: 45px;
+  background-color: var(--accent-color);
+  border-radius: 12px;
+  text-decoration: none;
+  border: none;
+  text-align: center;
+  color: #FFFFFF;
+  font-size: 16px;
+  transition: 0.4s;
+}
+
 .headerButton:hover,
 .calcButton:hover,
 .registerButton:hover,
 .entryButton:hover,
-.cardButton:hover {
+.cardButton:hover,
+.toggleButton:hover {
   background-color: var(--accent-hover);
 }
 

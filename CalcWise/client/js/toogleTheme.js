@@ -1,12 +1,23 @@
-function toggleTheme() {
-    const body = document.body;
-    const isDark = body.classList.toggle('dark');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+const toggle = document.getElementById('theme-toggle');
+const body = document.body;
+
+function applyTheme(theme) {
+  if (theme === 'dark') {
+    body.classList.add('dark');
+    toggle.textContent = '☀️';
+  } else {
+    body.classList.remove('dark');
+    toggle.textContent = '🌙';
+  }
+  localStorage.setItem('theme', theme);
 }
 
+toggle.addEventListener('click', () => {
+  const newTheme = body.classList.contains('dark') ? 'light' : 'dark';
+  applyTheme(newTheme);
+});
+
 document.addEventListener('DOMContentLoaded', () => {
-    const theme = localStorage.getItem('theme');
-    if (theme === 'dark') {
-        document.body.classList.add('dark');
-    }
+  const saved = localStorage.getItem('theme') || 'light';
+  applyTheme(saved);
 });
